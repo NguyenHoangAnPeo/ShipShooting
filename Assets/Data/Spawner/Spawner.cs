@@ -73,8 +73,8 @@ public abstract class Spawner : AnMonoBehaviour
     public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
     {
         Transform newPrefab = this.GetObjectFromPool(prefab);
+        newPrefab.SetParent (this.holder,true);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
-        newPrefab.parent = this.holder;
         this.spawnedCount++;
         return newPrefab;
     }
