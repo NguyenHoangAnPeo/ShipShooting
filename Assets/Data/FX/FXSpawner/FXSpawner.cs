@@ -7,10 +7,11 @@ public class FXSpawner : Spawner
    [SerializeField] protected static FXSpawner instance;
    [SerializeField] public static FXSpawner Instance => instance;
    public static string smoke_1a = "Smoke_1a";
+    public static string impact_1 = "Impact_1";
     protected override void Awake()
     {
         base.Awake();
-         if(FXSpawner.instance != null)Debug.Log("Only 1 FXSpawner is exits");
+        if (FXSpawner.instance != null) Debug.Log("Only 1 FXSpawner is exits");
         FXSpawner.instance = this;
     }
 
