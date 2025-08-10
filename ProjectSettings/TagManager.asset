@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Junk
     uniqueID: 46399747
+    locked: 0
+  - name: BulletFX
+    uniqueID: 298520559
     locked: 0

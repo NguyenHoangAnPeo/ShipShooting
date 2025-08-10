@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     [SerializeField] protected Transform target;
-    [SerializeField] protected float speed = 2f;
+    [SerializeField] protected float speed = 4f;
     protected virtual void FixedUpdate(){
         this.Following();
     }

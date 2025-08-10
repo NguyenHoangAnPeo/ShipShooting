@@ -37,9 +37,9 @@ public class BulletImpart : BulletAbstract
         Debug.Log(transform.parent.name);
         if (other.transform.parent == this.BulletCtrl.Shooter) return;
         this.bulletCtrl.DamageSender.Send(other.transform);
-        this.createFXImpact();
+        this.createFXImpact(other);
     }
-    protected virtual void createFXImpact()
+    protected virtual void createFXImpact(Collider other)
     {
         string fxName = this.GetImpactFX();
 

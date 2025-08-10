@@ -4,80 +4,71 @@ using UnityEngine;
 
 public abstract class Spawner : AnMonoBehaviour
 {
-    [Header("Spawner")]
-    [SerializeField] protected Transform holder;
 
+    [SerializeField] protected Transform holders;
     [SerializeField] protected int spawnedCount = 0;
     public int SpawnedCount => spawnedCount;
 
+    [Space(10)]
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
-
     protected override void LoadComponents()
     {
-        this.LoadPrefabs();
-        this.LoadHolder();
+        base.LoadComponents();
+        this.LoadBullets();
+        this.LoadHolders();
     }
 
-    protected virtual void LoadHolder()
-    {
-        if (this.holder != null) return;
-        this.holder = transform.Find("Holder");
-        Debug.LogWarning(transform.name + ": LoadHodler", gameObject);
-    }
-
-    protected virtual void LoadPrefabs()
+    protected virtual void LoadBullets()
     {
         if (this.prefabs.Count > 0) return;
 
         Transform prefabObj = transform.Find("Prefabs");
         foreach (Transform prefab in prefabObj)
         {
-            this.prefabs.Add(prefab);
+            prefabs.Add(prefab);
         }
-
-        this.HidePrefabs();
-
-        Debug.LogWarning(transform.name + ": LoadPrefabs", gameObject);
+        HidePrefabs();
     }
+
+    protected virtual void LoadHolders()
+    {
+        if (this.holders != null) return;
+        this.holders = transform.Find("Holders");
+    }
+
 
     protected virtual void HidePrefabs()
     {
-        foreach (Transform prefab in this.prefabs)
+        foreach (Transform prefab in prefabs)
         {
             prefab.gameObject.SetActive(false);
         }
     }
 
-    public virtual Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation)
+    public virtual Transform Spawn(string prefabName,Vector2 spawnPos, Quaternion rotation)
     {
-        Transform prefab = this.GetPrefabByName(prefabName);
-        if (prefab == null)
-        {
-            Debug.LogError("Prefab not found: " + prefabName);
-            return null;
-        }
 
-        return this.Spawn(prefab, spawnPos, rotation);
+        Transform prefab = GetPrefabName(prefabName);
+        if (prefab == null) return null;
+        return this.Spawn(prefab, spawnPos,rotation);
+
     }
 
-    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    public virtual Transform Spawn(Transform prefab, Vector2 spawnPos, Quaternion rotation)
     {
-        Transform newPrefab = this.GetObjectFromPool(prefab);
+        Transform newPrefab = this.GetObjFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
-
-        newPrefab.SetParent(this.holder);
+        newPrefab.SetParent(this.holders);
         this.spawnedCount++;
-
         return newPrefab;
+
     }
 
-    protected virtual Transform GetObjectFromPool(Transform prefab)
+    protected virtual Transform GetObjFromPool(Transform prefab)
     {
         foreach (Transform poolObj in this.poolObjs)
         {
-            if (poolObj == null) continue;
-
             if (poolObj.name == prefab.name)
             {
                 this.poolObjs.Remove(poolObj);
@@ -94,21 +85,19 @@ public abstract class Spawner : AnMonoBehaviour
     {
         if (this.poolObjs.Contains(obj)) return;
 
-        this.poolObjs.Add(obj);
+        poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
         this.spawnedCount--;
-    }
+    } 
 
-    public virtual Transform GetPrefabByName(string prefabName)
+    public virtual Transform GetPrefabName(string name)
     {
-        foreach (Transform prefab in this.prefabs)
+        foreach (Transform prefab in prefabs)
         {
-            if (prefab.name == prefabName) return prefab;
+            if(prefab.name == name) return prefab;
         }
-
         return null;
     }
-
     public virtual Transform RandomPrefab()
     {
         int rand = Random.Range(0, this.prefabs.Count);
@@ -117,6 +106,6 @@ public abstract class Spawner : AnMonoBehaviour
 
     public virtual void Hold(Transform obj)
     {
-        obj.parent = this.holder;
+        obj.parent = this.holders;
     }
 }
