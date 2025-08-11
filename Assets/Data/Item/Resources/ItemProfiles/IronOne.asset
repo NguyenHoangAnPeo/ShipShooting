@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e76bbdc03de0554db74eb1b3d8e0d4e, type: 3}
-  m_Name: iron_2
+  m_Script: {fileID: 11500000, guid: 5ac6439e4a177b246ab1b5a95a2e7070, type: 3}
+  m_Name: IronOne
   m_EditorClassIdentifier: 
-  itemCode: code
-  itemName: iron_2
+  itemCode: 1
+  itemType: 1
+  itemName: IronOne
+  defaultMaxStack: 7

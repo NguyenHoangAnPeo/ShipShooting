@@ -3,6 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "SO/Item")]
 public class ItemSO : ScriptableObject
 {
-    public string itemCode = "code"; // Mã định danh item
+    public ItemCode itemCode = ItemCode.NoItem;
     public string itemName = "Item"; // Tên hiển thị của item
 }
