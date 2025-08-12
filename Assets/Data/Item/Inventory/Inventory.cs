@@ -6,11 +6,7 @@ public class Inventory : AnMonoBehaviour
 {
     [SerializeField] protected int maxSlot = 70;
     [SerializeField] protected List<ItemInventory> items;
-    protected override void Start()
-    {
-        base.Start();
-        this.AddItem(ItemCode.IronOne, 3);
-    }
+    
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
         ItemInventory itemInventory = this.GetItemByCode(itemCode);

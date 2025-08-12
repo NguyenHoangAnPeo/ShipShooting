@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100717078}
   - component: {fileID: 100717080}
-  - component: {fileID: 100717079}
+  - component: {fileID: 100717081}
   m_Layer: 0
   m_Name: ItemPickupable
   m_TagString: Untagged
@@ -220,19 +220,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1533527926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &100717079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100717077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61dd3ece02c8e5744acc4232f8582e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 100717080}
 --- !u!135 &100717080
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -254,6 +241,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &100717081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100717077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dd3ece02c8e5744acc4232f8582e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  junkCtrl: {fileID: 1533527927}
+  _collider: {fileID: 100717080}
 --- !u!1 &102091139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533527926}
+  - component: {fileID: 1533527927}
   m_Layer: 0
   m_Name: GoldOne
   m_TagString: Untagged
@@ -2337,6 +2339,21 @@ Transform:
   - {fileID: 100717078}
   m_Father: {fileID: 620087540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533527927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533527925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5113c227f2d184ea259acbb81cf6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  junkDespawn: {fileID: 1036937067}
+  model: {fileID: 563648731}
+  junkSO: {fileID: 0}
 --- !u!1 &1534971919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1961997562}
+  - component: {fileID: 1961997563}
   m_Layer: 0
   m_Name: IronOne
   m_TagString: Untagged
@@ -2743,6 +2761,21 @@ Transform:
   - {fileID: 2034522515}
   m_Father: {fileID: 620087540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961997563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961997561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5113c227f2d184ea259acbb81cf6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  junkDespawn: {fileID: 911620789}
+  model: {fileID: 426881436}
+  junkSO: {fileID: 0}
 --- !u!1 &1965412182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,7 +3045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dd3ece02c8e5744acc4232f8582e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 0}
+  junkCtrl: {fileID: 1961997563}
+  _collider: {fileID: 2034522517}
 --- !u!135 &2034522517
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3028,11 +3062,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2053578912
 GameObject:
