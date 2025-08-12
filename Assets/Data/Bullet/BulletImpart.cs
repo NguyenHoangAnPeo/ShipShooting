@@ -33,13 +33,11 @@ public class BulletImpart : BulletAbstract
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.parent.name);
-        Debug.Log(transform.parent.name);
         if (other.transform.parent == this.BulletCtrl.Shooter) return;
         this.bulletCtrl.DamageSender.Send(other.transform);
-        this.createFXImpact(other);
+        //this.createFXImpact();
     }
-    protected virtual void createFXImpact(Collider other)
+    /*protected virtual void createFXImpact()
     {
         string fxName = this.GetImpactFX();
 
@@ -51,6 +49,6 @@ public class BulletImpart : BulletAbstract
     protected string GetImpactFX()
     {
         return FXSpawner.impact_1;
-    }
+    }*/
 
 }
