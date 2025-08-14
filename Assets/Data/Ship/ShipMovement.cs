@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
    [SerializeField] protected Vector3 worldPosition;
-   [SerializeField] protected float speed = 0.1f;
+   [SerializeField] protected float speed = 0.02f;
    void FixedUpdate(){
     this.GetPos();
     this.LookAtTarget();
