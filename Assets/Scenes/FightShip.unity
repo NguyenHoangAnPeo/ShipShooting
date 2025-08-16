@@ -241,8 +241,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100717078}
-  - component: {fileID: 100717080}
   - component: {fileID: 100717081}
+  - component: {fileID: 100717080}
   m_Layer: 0
   m_Name: ItemPickupable
   m_TagString: Untagged
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dd3ece02c8e5744acc4232f8582e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 1533527927}
+  itemCtrl: {fileID: 0}
   _collider: {fileID: 100717080}
 --- !u!1 &102091139
 GameObject:
@@ -2039,7 +2039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911620790}
-  - component: {fileID: 911620789}
+  - component: {fileID: 911620791}
   m_Layer: 0
   m_Name: Despawn
   m_TagString: Untagged
@@ -2047,21 +2047,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &911620789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911620788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feac33a3eaf2a744a8afa910c9fd5a21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disLimit: 50
-  distance: 0
-  mainCamera: {fileID: 519420032}
 --- !u!4 &911620790
 Transform:
   m_ObjectHideFlags: 0
@@ -2077,6 +2062,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1961997562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911620791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911620788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25629d1ff0864274b976c545e380717c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disLimit: 50
+  distance: 0
+  mainCamera: {fileID: 519420032}
 --- !u!1 &984574512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,7 +2858,7 @@ Transform:
   m_GameObject: {fileID: 1961997561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0.68, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2876,12 +2876,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1961997561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5113c227f2d184ea259acbb81cf6a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ae53b668d410ac47bf2f072315719d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkDespawn: {fileID: 911620789}
-  model: {fileID: 426881436}
-  junkSO: {fileID: 11400000, guid: 722cc6cd6d5b9cd4c98c94784802de36, type: 2}
+  itemDespawn: {fileID: 0}
 --- !u!1 &1965412182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,7 +3149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dd3ece02c8e5744acc4232f8582e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 1961997563}
+  itemCtrl: {fileID: 0}
   _collider: {fileID: 2034522517}
 --- !u!135 &2034522517
 SphereCollider:
