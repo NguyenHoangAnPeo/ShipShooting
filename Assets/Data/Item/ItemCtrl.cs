@@ -15,7 +15,7 @@ public class ItemCtrl : AnMonoBehaviour
     protected virtual void LoadItemDespawn()
     {
         if(this.itemDespawn != null)return;
-        this.itemDespawn = transform.parent.GetComponentInChildren<ItemDespawn>();
+        this.itemDespawn = gameObject.GetComponentInChildren<ItemDespawn>();
         Debug.Log(transform.name+ "LoadItemDespawn",gameObject);
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ac6439e4a177b246ab1b5a95a2e7070, type: 3}
-  m_Name: IronOne
+  m_Name: IronOre
   m_EditorClassIdentifier: 
   itemCode: 1
   itemType: 1
-  itemName: IronOne
+  itemName: IronOre
   defaultMaxStack: 7
