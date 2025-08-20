@@ -15,6 +15,22 @@ public class Inventory : AnMonoBehaviour
         this.AddItem(ItemCode.IronOre, 4);
         this.AddItem(ItemCode.GoldOre, 4);
     }
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        int addCount = itemInventory.itemCount;
+        ItemProFileSO itemProFile = itemInventory.itemProfile;
+        ItemCode itemCode = itemInventory.itemProfile.itemCode;
+        ItemType itemType = itemInventory.itemProfile.itemType;
+        if (itemType == ItemType.Equiment) return this.AddEquiment(itemInventory);
+
+        return this.AddItem(itemCode,addCount);
+    }
+    public virtual bool AddEquiment(ItemInventory itemInventory)
+    {
+        if (this.IsInventoryFull()) return false;
+        this.items.Add(itemInventory);
+        return true;
+    }
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
         ItemProFileSO itemProfile = this.GetItemProfile(itemCode);
@@ -135,6 +151,16 @@ public class Inventory : AnMonoBehaviour
                 deductCount = 0;
             }
             itemInventory.itemCount -= deduct;
+        }
+        this.ClearEmptySlot();
+    }
+    protected virtual void ClearEmptySlot()
+    {
+        ItemInventory itemInventory;
+        for (int i = 0; i < items.Count; i++)
+        {
+            itemInventory = this.items[i];
+            if(itemInventory.itemCount == 0)this.items.RemoveAt(i);
         }
     }
     // protected virtual ItemInventory AddEmptyProfile(ItemCode itemCode)
