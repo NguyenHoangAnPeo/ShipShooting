@@ -15,13 +15,18 @@ public class ItemCtrl : AnMonoBehaviour
         this.LoadItemDespawn();
         this.LoadItemInventory();
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.ResetItem();
+    }
     protected virtual void LoadItemInventory()
     {
         if (this.itemInventory.itemProfile != null) return;
         ItemCode itemCode = ItemCodeParser.FromString(transform.name);
         ItemProFileSO itemProFile = ItemProFileSO.FindByItemCode(itemCode);
         this.itemInventory.itemProfile = itemProFile;
-        this.itemInventory.itemCount = 1;
+        this.ResetItem();
         Debug.Log(transform.name + "LoadInventory", gameObject);
     }
     protected virtual void LoadItemDespawn()
@@ -32,6 +37,12 @@ public class ItemCtrl : AnMonoBehaviour
     }
     public virtual void SetItemInventory(ItemInventory itemInventory)
     {
-        this.itemInventory = itemInventory;
+        //this.itemInventory = itemInventory;
+        this.itemInventory = itemInventory.Clone();
+    }
+    protected virtual void ResetItem()
+    {
+        this.itemInventory.itemCount = 1;
+        this.itemInventory.upgradeLevel = 0;
     }
 }

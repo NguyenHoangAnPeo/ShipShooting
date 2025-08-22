@@ -25,10 +25,11 @@ public class Inventory : AnMonoBehaviour
 
         return this.AddItem(itemCode,addCount);
     }
-    public virtual bool AddEquiment(ItemInventory itemInventory)
+    public virtual bool AddEquiment(ItemInventory itemPicked)
     {
         if (this.IsInventoryFull()) return false;
-        this.items.Add(itemInventory);
+        ItemInventory item = itemPicked.Clone();
+        this.items.Add(itemPicked);
         return true;
     }
     public virtual bool AddItem(ItemCode itemCode, int addCount)
