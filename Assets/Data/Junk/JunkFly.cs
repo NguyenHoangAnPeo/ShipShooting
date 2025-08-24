@@ -10,21 +10,30 @@ public class JunkFly : ParentFly
         base.ResetValue();
         this.moveSpeed = 0.5f;
     }
-    protected override void OnEnable(){
+    protected override void OnEnable()
+    {
         base.OnEnable();
         this.GetFlyDirection();
     }
-    protected virtual void GetFlyDirection(){
-        Vector3 camPos = GameCtrl.Instance.MainCamera.transform.position;
+    protected virtual void GetFlyDirection()
+    {
+        Vector3 camPos = this.GetCameraPosition();
         Vector3 objPos = transform.parent.position;
 
-        camPos.x += Random.Range(-17,17);
-        camPos.z += Random.Range(-17,17); 
+        camPos.x += Random.Range(-17, 17);
+        camPos.z += Random.Range(-17, 17);
 
         Vector3 diff = camPos - objPos;
         diff.Normalize();
-        float rot_z = Mathf.Atan2(diff.y, diff.x)*Mathf.Rad2Deg;
-        transform.parent.rotation = Quaternion.Euler(0f,0f,rot_z);
-        Debug.DrawLine(objPos,objPos+diff*7,Color.red,Mathf.Infinity);
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        transform.parent.rotation = Quaternion.Euler(0f, 0f, rot_z);
+        Debug.DrawLine(objPos, objPos + diff * 7, Color.red, Mathf.Infinity);
+    }
+    protected virtual Vector3 GetCameraPosition()
+    {
+        if(GameCtrl.Instance.MainCamera == null)return Vector3.zero;
+
+        Vector3 camPos = GameCtrl.Instance.MainCamera.transform.position;
+        return camPos;
     }
 }
