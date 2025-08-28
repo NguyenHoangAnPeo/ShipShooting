@@ -24,7 +24,7 @@ public class JunkDamageReceiver : DamageReceiver
 
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(this.junkCtrl.JunkSO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(this.junkCtrl.ShootableObjectSO.dropList, dropPos, dropRot);
     }
     protected virtual void OnDeadFX()
     {
@@ -39,7 +39,7 @@ public class JunkDamageReceiver : DamageReceiver
     public override void Reborn()
     {
         // Ham reborn se reset hp va hpMax khi chay game chu khong phai la khi reset
-        this.hpMax = this.junkCtrl.JunkSO.hpMax;
+        this.hpMax = this.junkCtrl.ShootableObjectSO.hpMax;
         base.Reborn();
         Debug.LogWarning("Reborn", gameObject);
     }
