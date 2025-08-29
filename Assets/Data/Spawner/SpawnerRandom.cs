@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawnerRandom : AnMonoBehaviour
+public class SpawnerRandom : AnMonoBehaviour
 {
-    [Header("Junk Random")]
+    [Header("Spawner Random")]
     [SerializeField] protected SpawnCtrl spawnCtrl;
     [SerializeField] protected float randomDelay = 1f;
     [SerializeField] protected float randomTimer = 0f;
@@ -12,13 +12,13 @@ public class JunkSpawnerRandom : AnMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadJunkCtrl();
+        this.LoadSpawnCtrl();
     }
-    protected virtual void LoadJunkCtrl()
+    protected virtual void LoadSpawnCtrl()
     {
         if (this.spawnCtrl != null) return;
         this.spawnCtrl = GetComponent<SpawnCtrl>();
-        Debug.Log(transform.name + ": LoadJunkCtrl", gameObject);
+        Debug.Log(transform.name + ": LoadSpawnCtrl", gameObject);
     }
 
     protected virtual void FixedUpdate()
@@ -36,7 +36,7 @@ public class JunkSpawnerRandom : AnMonoBehaviour
         Vector3 pos = ranPoint.position;
         Quaternion rot = transform.rotation;
 
-        Transform prefab = JunkSpawner.Instance.RandomPrefab();
+        Transform prefab = this.spawnCtrl.Spawner.RandomPrefab();
         Transform obj = this.spawnCtrl.Spawner.Spawn(prefab, pos, rot);
         obj.gameObject.SetActive(true);
         //Invoke(nameof(this.JunkSpawning), 1f);

@@ -6,8 +6,8 @@ public class JunkSpawnCtrl : AnMonoBehaviour
 {
     [SerializeField] protected JunkSpawner junkSpawner;
     public JunkSpawner JunkSpawner {get => junkSpawner;}
-    [SerializeField] protected JunkSpawnPoints junkSpawnPoints;
-    public JunkSpawnPoints JunkSpawnPoints {get => junkSpawnPoints;}
+    [SerializeField] protected SpawnPoints spawnPoints;
+    public SpawnPoints SpawnPoints {get => spawnPoints;}
 
     protected override void LoadComponents(){
         base.LoadComponents();
@@ -21,8 +21,8 @@ public class JunkSpawnCtrl : AnMonoBehaviour
         Debug.Log(transform.name + ": LoadJunkSpawner", gameObject);
     }
     protected virtual void LoadSpawnPoints(){
-        if(this.junkSpawnPoints != null) return;
-        this.junkSpawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
+        if(this.spawnPoints != null) return;
+        this.spawnPoints = Transform.FindObjectOfType<SpawnPoints>();
         Debug.Log(transform.name + ": LoadSpawnPoints",gameObject);
     }
 }
