@@ -5,9 +5,22 @@ using UnityEngine;
 public abstract class BaseAbility : AnMonoBehaviour
 {
     [Header("Base Ability")]
-    [SerializeField] protected float timer = 0f;
+    [SerializeField] protected Abilities abilities;
+    [SerializeField] protected Abilities Abilities => abilities;
+    [SerializeField] protected float timer = 2f;
     [SerializeField] protected float delay = 2f;
     [SerializeField] protected bool isReady = false;
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        this.LoadAbilities();
+    }
+    protected virtual void LoadAbilities()
+    {
+        if (this.abilities != null) return;
+        this.abilities = transform.parent.GetComponent<Abilities>();
+        Debug.Log(transform.name + "LoadAbilities", gameObject);
+    }
 
     protected virtual void FixedUpdate()
     {
@@ -20,7 +33,7 @@ public abstract class BaseAbility : AnMonoBehaviour
         if (this.timer < this.delay) return;
         this.isReady = true;
     }
-    protected virtual void Active()
+    public virtual void Active()
     {
         this.timer = 0;
         this.isReady = false;
