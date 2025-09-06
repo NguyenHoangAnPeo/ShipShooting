@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 167429740}
   - component: {fileID: 167429741}
   m_Layer: 0
-  m_Name: ShipShooting
+  m_Name: ObjShooting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,6 +2083,7 @@ MonoBehaviour:
   despawn: {fileID: 743143295}
   model: {fileID: 514566474}
   shootableObjectSO: {fileID: 11400000, guid: 6f37fb66150389046894a55e298162b4, type: 2}
+  objShooting: {fileID: 0}
   spawnPoints: {fileID: 343774689}
 --- !u!1 &670226818
 GameObject:
@@ -3488,7 +3489,7 @@ GameObject:
   - component: {fileID: 1169452596}
   - component: {fileID: 1169452597}
   m_Layer: 0
-  m_Name: ShipMovement
+  m_Name: ObjMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3991,6 +3992,7 @@ MonoBehaviour:
   despawn: {fileID: 941040406}
   model: {fileID: 1320107461}
   shootableObjectSO: {fileID: 11400000, guid: f3e91f3c04ee0fe48a0dd96d7f0fef4f, type: 2}
+  objShooting: {fileID: 167429741}
   spawnPoints: {fileID: 0}
 --- !u!4 &1376247628
 Transform:
@@ -4897,6 +4899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1982466956}
   - component: {fileID: 1982466957}
+  - component: {fileID: 1982466958}
   m_Layer: 0
   m_Name: ObjAppearing
   m_TagString: Untagged
@@ -4913,7 +4916,7 @@ Transform:
   m_GameObject: {fileID: 1982466955}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.32, y: 0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4937,6 +4940,20 @@ MonoBehaviour:
   currentScale: 0
   startScale: 0.1
   maxScale: 1
+--- !u!114 &1982466958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982466955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7f7cbf80c98b14ba1678d482af470b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootableObjectCtrl: {fileID: 1376247627}
+  objAppearing: {fileID: 1982466957}
 --- !u!1 &1991181558
 GameObject:
   m_ObjectHideFlags: 0

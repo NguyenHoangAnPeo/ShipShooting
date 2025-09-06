@@ -10,12 +10,21 @@ public abstract class ShootableObjectCtrl : AnMonoBehaviour
     public Transform Model => model;
     [SerializeField] protected ShootableObjectSO shootableObjectSO;
     public ShootableObjectSO ShootableObjectSO => shootableObjectSO;
+    [SerializeField] protected ObjShooting objShooting;
+    public ObjShooting ObjShooting => objShooting;
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
         this.LoadDespawn();
         this.LoadSO();
+        this.LoadObjShooting();
+    }
+    protected virtual void LoadObjShooting()
+    {
+        if (this.objShooting != null) return;
+        this.objShooting = GetComponentInChildren<ObjShooting>();
+        Debug.Log(transform.name + "LoadObjShooting", gameObject);
     }
     protected virtual void LoadDespawn()
     {
