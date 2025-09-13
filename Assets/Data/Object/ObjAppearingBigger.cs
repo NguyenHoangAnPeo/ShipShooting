@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjAppearingBigger : ObjAppearing
 {
     [Header("Obj Appearing Bigger")]
-    [SerializeField] protected float speedScale = 0.06f;
+    [SerializeField] protected float speedScale = 0.02f;
     [SerializeField] protected float currentScale = 0f;
     [SerializeField] protected float startScale = 0.1f;
     [SerializeField] protected float maxScale = 1f;

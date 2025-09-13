@@ -259,14 +259,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 52516326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf71044a92a14c448a9377ecb2a7a79a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab1216f0811e58e44b769ea82e662f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities: {fileID: 0}
+  abilities: {fileID: 1273708174}
   timer: 2
   delay: 2
   isReady: 0
   spawner: {fileID: 1323627434}
+  minions: []
+  minionLimit: 4
 --- !u!1 &59550501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,7 +4250,7 @@ Transform:
   m_GameObject: {fileID: 1376247626}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.77, y: 0.95, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4879,7 +4881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  rotSpeed: 5
+  rotSpeed: 10
 --- !u!1 &1847261593
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,7 +5311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAppearing: 0
   appeared: 0
-  speedScale: 0.06
+  speedScale: 0.02
   currentScale: 0
   startScale: 0.1
   maxScale: 1
