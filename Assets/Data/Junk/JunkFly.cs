@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class JunkFly : ParentFly
@@ -20,8 +19,8 @@ public class JunkFly : ParentFly
         Vector3 camPos = this.GetCameraPosition();
         Vector3 objPos = transform.parent.position;
 
-        camPos.x += Random.Range(-17, 17);
-        camPos.z += Random.Range(-17, 17);
+        camPos.x += UnityEngine.Random.Range(-17, 17);
+        camPos.z += UnityEngine.Random.Range(-17, 17);
 
         Vector3 diff = camPos - objPos;
         diff.Normalize();

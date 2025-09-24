@@ -22,7 +22,7 @@ public class SpawnCtrl : AnMonoBehaviour
     }
     protected virtual void LoadSpawnPoints(){
         if(this.spawnPoint != null) return;
-        this.spawnPoint = Transform.FindObjectOfType<JunkSpawnPoints>();
+        this.spawnPoint = GameObject.Find("SceneSpawnPoints").GetComponent<SpawnPoints>();
         Debug.Log(transform.name + ": LoadSpawnPoints",gameObject);
     }
 }

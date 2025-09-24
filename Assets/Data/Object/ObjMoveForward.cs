@@ -9,7 +9,7 @@ public class ObjMoveFoward: ObjMovement
     
     protected override void FixedUpdate()
     {
-        this.GetMousePosition();
+        this.GetMoveTargetPosition();
         base.FixedUpdate();
     }
 
@@ -26,7 +26,7 @@ public class ObjMoveFoward: ObjMovement
         Debug.Log(transform.name + ": LoadMoveTarget", gameObject);
     }
 
-    protected virtual void GetMousePosition()
+    protected virtual void GetMoveTargetPosition()
     {
         this.targetPosition = moveTarget.position;
         this.targetPosition.z = 0;

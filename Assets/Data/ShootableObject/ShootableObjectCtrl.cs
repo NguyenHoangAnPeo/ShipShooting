@@ -16,6 +16,8 @@ public abstract class ShootableObjectCtrl : AnMonoBehaviour
     public ObjMovement ObjMovement => objMovement;
     [SerializeField] protected ObjLookAtTarget objLookAtTarget;
     public ObjLookAtTarget ObjLookAtTarget => objLookAtTarget;
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -25,6 +27,13 @@ public abstract class ShootableObjectCtrl : AnMonoBehaviour
         this.LoadObjShooting();
         this.LoadObjMovement();
         this.LoadObjLookAtTarget();
+        this.LoadSpawner();
+    }
+     protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + "Loadspawner", gameObject);
     }
     protected virtual void LoadObjShooting()
     {

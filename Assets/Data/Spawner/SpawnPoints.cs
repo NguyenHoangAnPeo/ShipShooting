@@ -18,7 +18,7 @@ public class SpawnPoints : AnMonoBehaviour
         Debug.Log(transform.name + "LoadPoints",gameObject);
     }
     public virtual Transform GetRandom(){
-        int rand = Random.Range(0,this.points.Count);
+        int rand = UnityEngine.Random.Range(0,this.points.Count);
         return this.points[rand];
     }
 }

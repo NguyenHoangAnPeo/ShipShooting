@@ -15,7 +15,7 @@ public class JunkAbstract : AnMonoBehaviour
     protected virtual void LoadJunkCtrl(){
         if(this.junkCtrl != null)return;
         this.junkCtrl = transform.parent.GetComponent<JunkCtrl>();
-        Debug.Log(transform.name+ "LoadModel",gameObject);
+        Debug.Log(transform.name+ "LoadJunkCtrl",gameObject);
 
     }
 }

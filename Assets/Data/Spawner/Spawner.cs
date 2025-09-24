@@ -100,7 +100,7 @@ public abstract class Spawner : AnMonoBehaviour
     }
     public virtual Transform RandomPrefab()
     {
-        int rand = Random.Range(0, this.prefabs.Count);
+        int rand = UnityEngine.Random.Range(0, this.prefabs.Count);
         return this.prefabs[rand];
     }
 
