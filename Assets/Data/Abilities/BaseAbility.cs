@@ -6,7 +6,7 @@ public abstract class BaseAbility : AnMonoBehaviour
 {
     [Header("Base Ability")]
     [SerializeField] protected Abilities abilities;
-    [SerializeField] protected Abilities Abilities => abilities;
+    public Abilities Abilities => abilities;
     [SerializeField] protected float timer = 2f;
     [SerializeField] protected float delay = 2f;
     [SerializeField] protected bool isReady = false;
@@ -25,6 +25,10 @@ public abstract class BaseAbility : AnMonoBehaviour
     protected virtual void FixedUpdate()
     {
         this.Timing();
+    }
+    protected virtual void Update()
+    {
+        //For override
     }
     protected virtual void Timing()
     {

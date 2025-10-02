@@ -46,8 +46,8 @@ public class InputManager : MonoBehaviour
         if(this.direction.w == 0) this.direction.w = Input.GetKeyDown(KeyCode.DownArrow) ? 1 : 0;
 
         //if (this.direction.x == 1) Debug.Log("Left");
-        //if(this.direction.y == 1) Debug.Log("Right");
-        //if(this.direction.z == 1) Debug.Log("Up");
-        //if(this.direction.w == 1) Debug.Log("Down");
+        //if (this.direction.y == 1) Debug.Log("Right");
+        //if (this.direction.z == 1) Debug.Log("Up");
+        //if (this.direction.w == 1) Debug.Log("Down");
     }
 }

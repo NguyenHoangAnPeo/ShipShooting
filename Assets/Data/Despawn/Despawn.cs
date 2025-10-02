@@ -14,7 +14,7 @@ public abstract class Despawn : AnMonoBehaviour
         protected virtual void Despawning(){
         if(!this.CanDespawn())return;
         this.DespawnObject();
-        Debug.Log("Destroy game Bullet");
+        //Debug.Log("Destroy game Bullet");
     }
     public virtual void DespawnObject(){
         Destroy(transform.parent.gameObject);

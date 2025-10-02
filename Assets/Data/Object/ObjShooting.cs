@@ -23,7 +23,7 @@ public abstract class ObjShooting : AnMonoBehaviour
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation); // spawn vien dan;
         if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
-        Debug.Log("Shoot");
+        //Debug.Log("Shoot");
         BulletCtrl bulletCtrl = newBullet.GetComponent<BulletCtrl>();
         bulletCtrl.SetShooter(transform.parent);
     }
