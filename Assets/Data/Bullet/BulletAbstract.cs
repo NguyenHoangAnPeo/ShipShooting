@@ -10,11 +10,11 @@ public abstract class BulletAbstract : AnMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadDamageReceiver();
+        this.LoadBulletCtrl();
     }
-    protected virtual void LoadDamageReceiver(){
+    protected virtual void LoadBulletCtrl(){
         if(this.bulletCtrl!=null)return;
         this.bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
-        Debug.Log(transform.name+": LoadDamageReceiver",gameObject);
+        Debug.Log(transform.name+ ": LoadBulletCtrl", gameObject);
     }
 }

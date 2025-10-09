@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,8 @@ public abstract class Spawner : AnMonoBehaviour
 
     [Space(10)]
     [SerializeField] protected List<Transform> prefabs;
-    [SerializeField] protected List<Transform> poolObjs;
+    // SerializeField poolObjs sẽ bị lỗi
+    protected List<Transform> poolObjs = new List<Transform>();
     protected override void LoadComponents()
     {
         base.LoadComponents();

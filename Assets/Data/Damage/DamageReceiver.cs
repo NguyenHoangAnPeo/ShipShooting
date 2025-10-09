@@ -7,8 +7,13 @@ public abstract class DamageReceiver : AnMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField]protected SphereCollider sphereCollider;
-    [SerializeField]protected int hp = 1;
-    [SerializeField]protected int hpMax = 2;
+
+    [SerializeField]protected int hp = 3;
+
+    [SerializeField]protected int hpMax = 3;
+    [SerializeField] public int HP => hp;
+    [SerializeField] public int HPMax => hpMax;
+
     [SerializeField]protected bool isDead = false;
     protected override void OnEnable(){
         this.Reborn();
@@ -39,7 +44,7 @@ public abstract class DamageReceiver : AnMonoBehaviour
         if(this.hp<0)this.hp = 0;
         this.CheckIsDead();
     }
-    protected virtual bool IsDead(){
+    public virtual bool IsDead(){
         return this.hp <= 0;
     }
     protected virtual void CheckIsDead(){

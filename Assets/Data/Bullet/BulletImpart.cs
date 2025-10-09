@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -35,7 +34,6 @@ public class BulletImpart : BulletAbstract
     {
         if (other.transform.parent == this.BulletCtrl.Shooter) return;
         this.bulletCtrl.DamageSender.Send(other.transform);
-        //this.createFXImpact();
     }
     /*protected virtual void createFXImpact()
     {

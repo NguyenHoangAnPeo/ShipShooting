@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public abstract class BaseBtn : AnMonoBehaviour
 {
+    [Header("Base Btn")]
     [SerializeField] protected Button button;
 
     protected override void Start()
