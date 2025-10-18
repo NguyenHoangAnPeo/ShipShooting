@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIInventory : AnMonoBehaviour
+public class UIInventory : UIInventoryAbstract
 {
+    [Header("UI Inventory")]
+
     private static UIInventory instance;
     public static UIInventory Instance => instance;
 
@@ -12,7 +14,13 @@ public class UIInventory : AnMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.Close();
+        //this.Close();
+
+        InvokeRepeating(nameof(this.ShowItem), 1, 1);
+    }
+    protected virtual void FixedUpdate()
+    {
+       // this.ShowItem();
     }
     protected override void Awake()
     {
@@ -28,12 +36,29 @@ public class UIInventory : AnMonoBehaviour
     }
     public virtual void Open()
     {
-        gameObject.SetActive(true);
+        this.uIInventoryCtrl.gameObject.SetActive(true);
         isOpen = true;
     }
     public virtual void Close()
     {
-        gameObject.SetActive(false);
+        this.uIInventoryCtrl.gameObject.SetActive(false);
         isOpen = false;
+    }
+    protected virtual void ShowItem()
+    {
+        if (!this.isOpen) return;
+
+        this.ClearItems();
+
+        List<ItemInventory> items = PlayerCtrl.Instance.CurrentShip.Inventory.Items;
+        UIInvItemSpawner spawner = this.uIInventoryCtrl.UIInvItemSpawner;
+        foreach(ItemInventory item in items)
+        {
+            spawner.SpawnItem(item);
+        }
+    }
+    protected virtual void ClearItems()
+    {
+        this.uIInventoryCtrl.UIInvItemSpawner.ClearItems();
     }
 }

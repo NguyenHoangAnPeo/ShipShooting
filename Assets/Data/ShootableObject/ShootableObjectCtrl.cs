@@ -36,13 +36,13 @@ public abstract class ShootableObjectCtrl : AnMonoBehaviour
     {
         if (this.damageReceiver != null) return;
         this.damageReceiver = transform.GetComponentInChildren<DamageReceiver>();
-        Debug.Log(transform.name + "LoadDamageReceiver", gameObject);
+        Debug.LogWarning(transform.name + "LoadDamageReceiver", gameObject);
     }
     protected virtual void LoadSpawner()
     {
         if (this.spawner != null) return;
         this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
-        Debug.Log(transform.name + "Loadspawner", gameObject);
+        Debug.LogWarning(transform.name + "Loadspawner", gameObject);
     }
     protected virtual void LoadObjShooting()
     {
