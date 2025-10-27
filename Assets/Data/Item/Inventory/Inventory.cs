@@ -110,6 +110,7 @@ public class Inventory : AnMonoBehaviour
     {
         ItemInventory itemInventory = new ItemInventory
         {
+            itemId = ItemInventory.RandomId(),
             itemProfile = itemProFile,
             maxStack = itemProFile.defaultMaxStack
         };

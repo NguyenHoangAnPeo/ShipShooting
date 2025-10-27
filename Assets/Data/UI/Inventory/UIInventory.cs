@@ -11,12 +11,14 @@ public class UIInventory : UIInventoryAbstract
 
     protected bool isOpen = false;
 
+    [SerializeField] protected InventorySort inventorySort = InventorySort.ByName;
+
     protected override void Start()
     {
         base.Start();
         //this.Close();
 
-        InvokeRepeating(nameof(this.ShowItem), 1, 1);
+        InvokeRepeating(nameof(this.ShowItems), 1, 1);
     }
     protected virtual void FixedUpdate()
     {
@@ -44,7 +46,7 @@ public class UIInventory : UIInventoryAbstract
         this.uIInventoryCtrl.gameObject.SetActive(false);
         isOpen = false;
     }
-    protected virtual void ShowItem()
+    protected virtual void ShowItems()
     {
         if (!this.isOpen) return;
 
@@ -56,9 +58,66 @@ public class UIInventory : UIInventoryAbstract
         {
             spawner.SpawnItem(item);
         }
+        this.SortItems();
     }
     protected virtual void ClearItems()
     {
         this.uIInventoryCtrl.UIInvItemSpawner.ClearItems();
+    }
+    protected virtual void SortItems()
+    {
+        if (this.inventorySort == InventorySort.NoSort) return;
+        int itemCount = this.uIInventoryCtrl.Content.childCount;
+        Transform currentItem, nextItem;
+        UIItemInventory currentUIItem, nextUIItem;
+        ItemProFileSO currentProfile, nextProfile;
+        string currentName, nextName;
+        int currentCount, nextCount;
+        bool isSorting = false;
+
+        for (int i = 0; i < itemCount - 1; i++)
+        {
+            currentItem = this.uIInventoryCtrl.Content.GetChild(i);
+            nextItem = this.uIInventoryCtrl.Content.GetChild(i + 1);
+
+            currentUIItem = currentItem.GetComponent<UIItemInventory>();
+            nextUIItem = nextItem.GetComponent<UIItemInventory>();
+
+            currentProfile = currentUIItem.ItemInventory.itemProfile;
+            nextProfile = nextUIItem.ItemInventory.itemProfile;
+
+            bool isSwap = false;
+
+            switch (this.inventorySort)
+            {
+                case InventorySort.ByName:
+                    currentName = currentProfile.name;
+                    nextName = nextProfile.name;
+
+                    isSwap = string.Compare(currentName, nextName) == 1;
+                    break;
+                case InventorySort.ByCount:
+                    currentCount = currentUIItem.ItemInventory.itemCount;
+                    nextCount = nextUIItem.ItemInventory.itemCount;
+
+                    isSwap = currentCount < nextCount;
+                    break;
+            }
+            if (isSwap)
+            {
+                this.SwapItems(currentItem, nextItem);
+                isSorting = true;
+            }
+        }
+        if (isSorting) this.SortItems();
+    }
+    
+    protected virtual void SwapItems(Transform currentItem, Transform nextItem)
+    {
+        int currentIndex = currentItem.GetSiblingIndex();
+        int nextIndex = nextItem.GetSiblingIndex();
+
+        currentItem.SetSiblingIndex(nextIndex);
+        nextItem.SetSiblingIndex(currentIndex);
     }
 }

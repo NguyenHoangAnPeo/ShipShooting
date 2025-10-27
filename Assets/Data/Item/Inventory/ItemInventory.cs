@@ -2,6 +2,7 @@ using System;
 [Serializable]
 public class ItemInventory
 {
+    public string itemId;
     public ItemProFileSO itemProfile;
     public int itemCount = 0;
     public int maxStack = 7;
@@ -10,10 +11,15 @@ public class ItemInventory
     {
         ItemInventory item = new ItemInventory
         {
+            itemId = ItemInventory.RandomId(),
             itemProfile = this.itemProfile,
             itemCount = this.itemCount,
             upgradeLevel = this.upgradeLevel,
         };
         return item;
+    }
+    public static string RandomId()
+    {
+        return RandomString.Generate(27);
     }
 }

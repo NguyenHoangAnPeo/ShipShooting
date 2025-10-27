@@ -7,17 +7,26 @@ public class UIItemInventory : AnMonoBehaviour
 {
     [Header("UI Item Inventory")]
 
+    [SerializeField] protected ItemInventory itemInventory;
+
+    public ItemInventory ItemInventory => itemInventory;
+
     [SerializeField] protected Text itemName;
     public Text ItemName => itemName;
 
     [SerializeField] protected Text itemNumber;
     public Text ItemNumber => itemNumber;
 
+    [SerializeField] protected Image itemImage;
+
+    public Image ItemImage => itemImage;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadItemName();
         this.LoadItemNumber();
+        this.LoadItemImage();
     }
     protected virtual void LoadItemName()
     {
@@ -31,9 +40,17 @@ public class UIItemInventory : AnMonoBehaviour
         this.itemNumber = transform.Find("ItemNumber").GetComponent<Text>();
         Debug.Log(transform.name + ": LoadItemNumber", gameObject);
     }
+    protected virtual void LoadItemImage()
+    {
+        if (this.itemImage != null) return;
+        this.itemImage = transform.Find("ItemImage").GetComponent<Image>();
+        Debug.Log(transform.name + ": LoadItemImage", gameObject);
+    }
     public virtual void ShowItem(ItemInventory item)
     {
-        this.itemName.text = item.itemProfile.itemName;
-        this.itemNumber.text = item.itemCount.ToString(); 
+        this.itemInventory = item;
+        this.itemName.text = this.itemInventory.itemProfile.itemName;
+        this.itemNumber.text = this.itemInventory.itemCount.ToString();
+        this.itemImage.sprite = this.itemInventory.itemProfile.itemSprite;
     }
 }
