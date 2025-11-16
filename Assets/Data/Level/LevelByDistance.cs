@@ -7,7 +7,7 @@ public class LevelByDistance : Level
     [Header("Level By Distance")]
     [SerializeField] protected Transform target;
     [SerializeField] protected float distance = 0;
-    [SerializeField] protected float distancePerLevel = 10f;
+    [SerializeField] protected float distancePerLevel = 60f;
     protected virtual void FixedUpdate()
     {
         this.Leveling();

@@ -12,6 +12,8 @@ public class PlayerCtrl : AnMonoBehaviour
 
     [SerializeField] protected PlayerPickup playerPickup;
     public PlayerPickup PlayerPickup => playerPickup;
+    [SerializeField] protected PlayerAbility playerAbility;
+    public PlayerAbility PlayerAbility => playerAbility;
 
     protected override void Awake()
     {
@@ -23,11 +25,18 @@ public class PlayerCtrl : AnMonoBehaviour
     {
         base.LoadComponents();
         this.LoadPlayerPickup();
+        this.LoadPlayerAbility();
     }
     protected virtual void LoadPlayerPickup()
     {
         if (playerPickup != null) return;
         this.playerPickup = transform.GetComponentInChildren<PlayerPickup>();
+        Debug.Log(transform.name + "LoadPlayerPickup", gameObject);
+    }
+    protected virtual void LoadPlayerAbility()
+    {
+        if (playerAbility != null) return;
+        this.playerAbility = transform.GetComponentInChildren<PlayerAbility>();
         Debug.Log(transform.name + "LoadPlayerPickup", gameObject);
     }
 }

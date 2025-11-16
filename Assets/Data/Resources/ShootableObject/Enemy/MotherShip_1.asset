@@ -15,6 +15,9 @@ MonoBehaviour:
   objName: MotherShip_1
   objType: 2
   hpMax: 10
+  baseLimit: 1
+  baseInterval: 40
+  isBoss: 1
   dropList:
   - itemProfileSO: {fileID: 11400000, guid: 768b66df9802bfa46972b2abbfa6a352, type: 2}
     dropRate: 0

@@ -28,7 +28,7 @@ public class ItemUpgrade : InventoryAbstract
 
         this.DeductIngredients(upgradeLevels, itemInventory.upgradeLevel);
         itemInventory.upgradeLevel++;
-        Debug.Log("Da upgrade");
+        //Debug.Log("Da upgrade");
         return true;
 
     }

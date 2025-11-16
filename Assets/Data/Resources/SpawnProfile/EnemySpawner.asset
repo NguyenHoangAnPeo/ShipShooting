@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de8814cfea67f344961a659bf61175c, type: 3}
-  m_Name: Enemy_1
+  m_Script: {fileID: 11500000, guid: 3612f6bad9f806d49ac46ac35f304c9c, type: 3}
+  m_Name: EnemySpawner
   m_EditorClassIdentifier: 
-  objName: Enemy_1
-  objType: 2
-  hpMax: 5
-  dropList:
-  - itemProfileSO: {fileID: 11400000, guid: 858de648542d88e4ab25cb5965f6c0a3, type: 2}
-    dropRate: 0
-    minDrop: 0
-    maxDrop: 0
+  profileName: EnemySpawner
+  baseLimit: 5
+  baseInterval: 15
+  enemyList:
+  - enemyData: {fileID: 11400000, guid: f3e91f3c04ee0fe48a0dd96d7f0fef4f, type: 2}
+    minLevel: 1
+    maxLevel: 20

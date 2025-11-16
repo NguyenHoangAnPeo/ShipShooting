@@ -6,13 +6,30 @@ public class SpawnerRandom : AnMonoBehaviour
 {
     [Header("Spawner Random")]
     [SerializeField] protected SpawnCtrl spawnCtrl;
-    [SerializeField] protected float randomDelay = 1f;
-    [SerializeField] protected float randomTimer = 0f;
-    [SerializeField] protected float randomLimit = 9f;
+    [SerializeField] protected SpawnProfileSO spawnProfileSO;
+    [SerializeField] protected float spawnDelay = 20f;
+    [SerializeField] protected float timeSinceLastSpawn = 0f;
+    [SerializeField] protected float spawnLimit = 2f;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (Level.Instance != null)
+            Level.Instance.OnLevelChanged += SetSpawnInfo;
+        else
+            Debug.LogWarning($"{transform.name}: Level.Instance chua khoi tao truoc OnEnable chay!");
+    }
+
+    protected virtual void OnDisable()
+    {
+        Level.Instance.OnLevelChanged -= SetSpawnInfo;
+    }
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadSpawnCtrl();
+        this.LoadSpawnProfileSO();
     }
     protected virtual void LoadSpawnCtrl()
     {
@@ -20,7 +37,13 @@ public class SpawnerRandom : AnMonoBehaviour
         this.spawnCtrl = GetComponent<SpawnCtrl>();
         Debug.Log(transform.name + ": LoadSpawnCtrl", gameObject);
     }
-
+    protected virtual void LoadSpawnProfileSO()
+    {
+        if (this.spawnProfileSO != null) return;
+        string resPath = "SpawnProfile/"+transform.name;
+        this.spawnProfileSO = Resources.Load<SpawnProfileSO>(resPath);
+    }
+    
     protected virtual void FixedUpdate()
     {
         this.JunkSpawning();
@@ -28,9 +51,9 @@ public class SpawnerRandom : AnMonoBehaviour
     protected virtual void JunkSpawning()
     {
         if (this.RandomReachLimit()) return;
-        this.randomTimer += Time.fixedDeltaTime;
-        if (this.randomTimer < this.randomDelay) return;
-        this.randomTimer = 0f;
+        this.timeSinceLastSpawn += Time.fixedDeltaTime;
+        if (this.timeSinceLastSpawn < this.spawnDelay) return;
+        this.timeSinceLastSpawn = 0f;
 
         Transform ranPoint = this.spawnCtrl.SpawnPoints.GetRandom();
         Vector3 pos = ranPoint.position;
@@ -44,6 +67,11 @@ public class SpawnerRandom : AnMonoBehaviour
     protected virtual bool RandomReachLimit()
     {
         int currentJunk = this.spawnCtrl.Spawner.SpawnedCount;
-        return currentJunk >= this.randomLimit;
+        return currentJunk >= this.spawnLimit;
+    }
+    protected virtual void SetSpawnInfo(int newLevel)
+    {
+        this.spawnDelay = Mathf.Max(1f, spawnProfileSO.baseInterval - newLevel * 0.2f);
+        this.spawnLimit = spawnProfileSO.baseLimit + Mathf.FloorToInt(newLevel / 3f);
     }
 }
