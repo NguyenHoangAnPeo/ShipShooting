@@ -5,7 +5,8 @@ using UnityEngine;
 public class ObjMovement : AnMonoBehaviour
 {
    [SerializeField] protected Vector3 targetPosition;
-   [SerializeField] protected float speed = 0.02f;
+    [SerializeField] protected Vector3 mousePosition;
+    [SerializeField] protected float speed = 0.02f;
    [SerializeField] protected float distance = 1f;
    [SerializeField] protected float minDistance = 1f;
    protected virtual void FixedUpdate()
@@ -14,7 +15,8 @@ public class ObjMovement : AnMonoBehaviour
    }
    protected virtual void MoveShip()
    {
-      this.distance = Vector3.Distance(transform.position, this.targetPosition);
+        this.mousePosition = InputManager.Instance.WorldMousePos;
+      this.distance = Vector3.Distance(transform.position, this.mousePosition);
       if (this.distance < minDistance) return;
 
       Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.speed);

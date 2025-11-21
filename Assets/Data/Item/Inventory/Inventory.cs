@@ -8,13 +8,13 @@ public class Inventory : AnMonoBehaviour
     [SerializeField] protected List<ItemInventory> items;
     public List<ItemInventory> Items => items;
 
-    protected override void Start()
-    {
-        base.Start();
-        this.AddItem(ItemCode.CopperSword, 1);
-        this.AddItem(ItemCode.IronOre, 10);
-        this.AddItem(ItemCode.GoldOre, 10);
-    }
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //    this.AddItem(ItemCode.CopperSword, 1);
+    //    this.AddItem(ItemCode.IronOre, 10);
+    //    this.AddItem(ItemCode.GoldOre, 10);
+    //}
     public virtual bool AddItem(ItemInventory itemInventory)
     {
         int addCount = itemInventory.itemCount;

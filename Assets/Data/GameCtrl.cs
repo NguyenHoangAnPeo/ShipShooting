@@ -8,6 +8,8 @@ public class GameCtrl : AnMonoBehaviour
     public static GameCtrl Instance {get => instance;}
     [SerializeField] protected Camera mainCamera;
     public Camera MainCamera {get => mainCamera;}
+    [SerializeField] protected GameOver gameOver;
+    public GameOver GameOver { get => gameOver; }
     protected override void Awake()
     {
         base.Awake();
@@ -23,6 +25,12 @@ public class GameCtrl : AnMonoBehaviour
     protected override void LoadComponents(){
         base.LoadComponents();
         this.LoadCamera();
+        this.LoadPlayerCtrl();
+    }
+    protected virtual void LoadPlayerCtrl()
+    {
+        if (this.gameOver != null) return;
+        this.gameOver = FindObjectOfType<GameOver>();
     }
     protected virtual void LoadCamera()
     {
@@ -36,5 +44,10 @@ public class GameCtrl : AnMonoBehaviour
             Debug.LogError("Không tìm thấy camera trong scene!");
         else
             Debug.Log(transform.name + " LoadCamera", gameObject);
+    }
+    protected virtual void FixedUpdate()
+    {
+        bool isDead = PlayerCtrl.Instance.CurrentShip.DamageReceiver.HP <= 0;
+        GameOver.gameObject.SetActive(isDead);
     }
 }
